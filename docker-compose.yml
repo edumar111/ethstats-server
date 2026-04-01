@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  ethstats-server:
+    container_name: ethstats-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        GRUNT_TASK: poa
+    restart: unless-stopped
+    environment:
+      WS_SECRET: ${WS_SECRET}
+    ports:
+      - "3030:3000"
+
+# docker compose build
+# docker compose up -d  
+# docker compose ps
+# docker logs -f ethstats-server
+# http://localhost:3030
+      
